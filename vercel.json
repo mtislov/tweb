@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:subdomain/:path*",
+      "destination": "https://:subdomain.web.telegram.org/:path*"
+    }
+  ]
+}

@@ -8,9 +8,10 @@ import checker from 'vite-plugin-checker';
 import autoprefixer from 'autoprefixer';
 import {resolve} from 'path';
 import {existsSync, copyFileSync} from 'fs';
-import {ServerOptions} from 'vite';
+import {Connect, ServerOptions} from 'vite';
 import {watchLangFile} from './watch-lang.js';
 import path from 'path';
+import IncomingMessage = Connect.IncomingMessage;
 
 const rootDir = resolve(__dirname);
 const ENV_LOCAL_FILE_PATH = path.join(rootDir, '.env.local');
@@ -26,10 +27,10 @@ if(isDEV) {
 
 const handlebarsPlugin = handlebars({
   context: {
-    title: 'Telegram Web',
-    description: 'Telegram is a cloud-based mobile and desktop messaging app with a focus on security and speed.',
-    url: 'https://web.telegram.org/k/',
-    origin: 'https://web.telegram.org/'
+    title: 'Title',
+    description: 'Description',
+    url: 'url',
+    origin: 'origin'
   }
 });
 
@@ -40,7 +41,7 @@ const serverOptions: ServerOptions = {
     return sourcePath.includes('node_modules') ||
       sourcePath.includes('logger') ||
       sourcePath.includes('eventListenerBase');
-  }
+  },
 };
 
 const SOLID_SRC_PATH = 'src/solid/packages/solid';
